@@ -1,0 +1,119 @@
+basePath: /
+definitions:
+  models.Post:
+    properties:
+      article:
+        type: string
+      id:
+        type: string
+      title:
+        type: string
+    type: object
+host: localhost:3000
+info:
+  contact:
+    email: nada@gmail.com
+    name: API support
+  description: service for managing posts
+  termsOfService: http://swagger.io/terms/
+  title: Post API
+  version: 1.0.0
+paths:
+  /:
+    get:
+      consumes:
+      - application/json
+      description: get details post
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.Post'
+      summary: get details
+      tags:
+      - posts
+    post:
+      consumes:
+      - application/json
+      description: create post coresponding on user input
+      parameters:
+      - description: create car
+        in: body
+        name: models.Post
+        required: true
+        schema:
+          $ref: '#/definitions/models.Post'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.Post'
+      summary: create post
+      tags:
+      - posts
+  /delete/{postId}:
+    delete:
+      consumes:
+      - application/json
+      description: delete post coresponding on id of post at user input
+      parameters:
+      - description: id of post to be deleted
+        in: path
+        name: postId
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "204":
+          description: no content
+      summary: delete post
+      tags:
+      - posts
+  /getOne/{postId}:
+    get:
+      consumes:
+      - application/json
+      description: get detail of post coresponding on user input
+      parameters:
+      - description: id of post
+        in: path
+        name: postId
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.Post'
+      summary: get detail for a given id
+      tags:
+      - posts
+  /update/{postId}:
+    post:
+      consumes:
+      - application/json
+      description: update post coresponding on id of post at user input
+      parameters:
+      - description: id of post to be updated
+        in: path
+        name: postId
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.Post'
+      summary: update post
+      tags:
+      - posts
+swagger: "2.0"
